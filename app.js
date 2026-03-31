@@ -15,6 +15,12 @@ app.use("/habits", habitRoutes);
 const progressRoutes = require("./routes/progressRoutes")
 app.use("/progress", progressRoutes);
 
+const friendRoutes = require("./routes/friendRoutes");
+app.use("/friends", friendRoutes);
+
+const notificationRoutes = require("./routes/notificationRoutes");
+app.use("/notifications", notificationRoutes);
+
 
 // connect to MongoDB
 const port = process.env.PORT || 3000;

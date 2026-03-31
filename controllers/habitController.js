@@ -28,6 +28,25 @@ const getHabits = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+const getHabitById = async (req, res) => {
+    try {
+        // const habit = await Habit.findone(req.params.id);
+        const habit = await Habit.findone({ userId: req.user.id });
+
+        if (!habit) {
+            return res.status(404).json({
+                message: "Habit not found"
+            });
+        }
+
+        res.json(habit);
+
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
 
 const updateHabit = async (req, res) => {
     try {
@@ -58,4 +77,5 @@ module.exports = {
     getHabits,
     updateHabit,
     deleteHabit,
+    getHabitById,
 };

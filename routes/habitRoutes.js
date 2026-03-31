@@ -5,7 +5,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 // connect to middleware validation
 const validate = require("../middleware/validationMiddleware");
 // connect to controllers
-const { createHabit, getHabits, updateHabit, deleteHabit } = require("../controllers/habitController");
+const { createHabit, getHabits, getHabitById, updateHabit, deleteHabit } = require("../controllers/habitController");
 // connect to validation schema
 const { createHabitSchema } = require("../validation/habitValidation");
 // create post habit route
@@ -20,6 +20,11 @@ router.get(
     "/",
     authMiddleware,
     getHabits
+);
+router.get(
+    "/:id",
+    authMiddleware,
+    getHabitById
 );
 // update habit route
 router.put(
